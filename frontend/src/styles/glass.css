@@ -1,0 +1,156 @@
+/* Shared material layer. Map canvas/markers never receive transforms or filters. */
+:root {
+  --radius: 16px;
+  --control-radius: 9px;
+  --panel: #29363deb;
+  --panel-deep: #18283080;
+  --panel-raised: #ffffff12;
+  --muted: #c2ced0;
+  --line: #e6f4ff26;
+  --glass-surface: linear-gradient(135deg, #ffffff12, #ffffff00 48%), #24323bdc;
+  --glass-shadow: inset 0 1px 0 #ffffff24, inset 0 -1px 0 #00000014, 0 12px 32px #10252d26;
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+}
+
+.app-header, .floating-controls, .current-kpi, .event-simulation,
+.route-panel, .map-mode, .map-legend, .map-leg-picker, .map-detail,
+.comparison-overlay, .account-popover, .requests-dialog, .maplibregl-popup-content {
+  background: var(--glass-surface);
+  border: 1px solid #e9f5ff32;
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(22px) saturate(125%);
+  backdrop-filter: blur(22px) saturate(125%);
+  border-radius: var(--radius);
+}
+.app-header { border-radius: 18px; }
+.panel-heading, .route-panel-header { padding-block: 15px; }
+.control-label, .panel-heading small, .route-panel-header small { color: #bccbce; }
+.brand strong { letter-spacing: -.7px; }
+.primary-nav { padding: 4px; border-radius: 13px; background: #0e20252b; }
+.primary-nav button[aria-pressed=true] {
+  background: #ffffff16 !important;
+  box-shadow: inset 0 1px 0 #ffffff20, 0 2px 6px #00000014;
+  color: #ffe58b;
+}
+button:not(.map-marker):not(.maplibregl-ctrl button) {
+  transition: background-color 180ms, border-color 180ms, box-shadow 180ms, color 180ms;
+}
+button:not(.map-marker):not(.maplibregl-ctrl button):focus-visible,
+select:focus-visible { outline: 2px solid #ffe284; outline-offset: 3px; }
+button:not(.map-marker):not(.maplibregl-ctrl button):active:not(:disabled) {
+  box-shadow: inset 0 2px 5px #00000028;
+}
+select { background-color: #15283080; border-color: #d7e9ed35; }
+select:hover { background-color: #344850; border-color: #d7e9ed65; }
+.segmented { gap: 5px; }
+.segmented button { border: 1px solid #ffffff0d !important; }
+.segmented button[aria-pressed=true] {
+  background: #f4cd4629 !important; border-color: #f4cd4673 !important;
+  box-shadow: inset 0 1px 0 #fff2;
+}
+.plan-toggle { border-color: #ffffff1f; border-radius: 11px; }
+.plan-toggle button[aria-pressed=true] { background: #ffffff20 !important; box-shadow: 0 2px 5px #0002; }
+.route-row { border-radius: 11px !important; padding: 13px !important; }
+.route-row:hover { background: #ffffff12 !important; }
+.route-row.selected { background: #f4cd461e !important; border-color: #f4cd4659 !important; }
+.route-row small { color: #bfcdcf; }
+.route-tabs { gap: 8px; }
+.route-tabs button { transition: color 180ms, border-color 180ms; }
+.drawer > strong, .unassigned-list article, .explanation, .explanation details {
+  border-radius: 11px; border-color: #d6e9ef2b; background: #18282f9c;
+}
+.timeline span, .timeline small { line-height: 1.7; }
+.timeline li:not(:last-child)::after { background: #c4d8dc38; }
+.badges span, .stop-status { border-radius: 5px; }
+.current-kpi strong { font-size: 29px; letter-spacing: -.8px; }
+.current-kpi h2 { font-size: 11px; font-weight: 650; letter-spacing: 1.2px; }
+.comparison-trigger { border-color: #d6e9ef30 !important; }
+.map-mode, .map-leg-picker { border-radius: 12px; }
+.map-legend { background-color: #24323bef; }
+.requests-dialog::backdrop { background: #0b1a2861; backdrop-filter: blur(5px); }
+.requests-dialog { background-color: #24323bef; }
+.account-popover { background-color: #24323bf5; }
+.account-trigger[aria-expanded=true] { background: #ffffff0d !important; }
+.operator-avatar { background: #f4cd4612; border-color: #f4cd4666; }
+
+/* One shared atmosphere for sign-in, session restore and the entry transition. */
+.auth-shell, .auth-splash, .session-reveal {
+  background: radial-gradient(ellipse at 12% 14%, #ead99f55, transparent 48%),
+    radial-gradient(ellipse at 88% 86%, #9eb8b844, transparent 48%), #17272e;
+}
+.auth-shell { color: #eff4f2; padding: 24px; gap: 24px; height: 100dvh; min-height: 0; }
+.auth-visual {
+  min-height: 0; border-radius: 22px; padding: clamp(32px, 4vw, 68px);
+  background: linear-gradient(145deg, #ffeeb5, #f4c942 70%, #dba933);
+  box-shadow: inset 0 1px 0 #fff9, 0 20px 50px #0002;
+}
+.auth-brand { animation: glassAppear 650ms var(--ease-out) both; }
+.auth-message { animation: glassAppear 850ms 90ms var(--ease-out) both; }
+.auth-message h1 { font-size: clamp(38px, 4vw, 66px); line-height: 1.08; letter-spacing: -2.3px; }
+.auth-message p { font-size: 16px; max-width: 470px; }
+.auth-kicker { border-radius: 30px; border-color: #19282f30; background: #ffffff26; }
+.auth-network { opacity: .12; }
+.auth-form-side { background: transparent; min-height: 0; padding: 24px; }
+.login-card {
+  width: min(460px, 100%); padding: clamp(24px, 3vw, 42px); gap: 21px;
+  color: #f0f5f3; background: linear-gradient(135deg, #ffffff13, #ffffff03), #18292e70;
+  border: 1px solid #ffffff2e; border-radius: 22px; box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  animation: glassAppear 850ms 140ms var(--ease-out) both;
+}
+.login-heading h2 { font-size: clamp(25px, 2.1vw, 32px); letter-spacing: -.9px; line-height: 1.2; }
+.login-heading > span, .login-heading p, .login-security { color: #bccdce; }
+.login-card label > span { font-size: 13px; font-weight: 600; letter-spacing: 0; }
+.login-card input { background: #14242a75; color: #fff; border: 1px solid #cce4e33b; border-radius: 10px; }
+.login-card input:hover { border-color: #e6f7f075; }
+.login-card input:focus { border-color: #f4cd46; box-shadow: 0 0 0 3px #f4cd461e; }
+.password-field button { color: #d7e2e1; background: #ffffff0d !important; border-radius: 7px !important; }
+.login-submit { background: #f4cd46 !important; color: #18262c !important; border-color: #ffe385 !important; border-radius: 10px !important; box-shadow: inset 0 1px 0 #fff5, 0 6px 20px #0002; }
+.login-submit:hover:not(:disabled) { background: #ffdf76 !important; transform: none; }
+.login-submit:has(.bee-logo) { color: #18262c !important; }
+.login-error { color: #ffd6cf; background: #8d38332b; border-radius: 8px; }
+.login-security { border-top: 1px solid #ffffff1a; padding-top: 20px; }
+.login-security strong { color: #dfe9e6; }
+.login-security small { color: #bccdce; }
+.auth-splash { gap: 14px; }
+.auth-splash .bee-logo { width: 96px; height: 96px; }
+.auth-splash strong { font-size: 28px; }
+.auth-splash span { color: #c0cfce; }
+.session-workspace { height: 100dvh; }
+.session-reveal {
+  position: fixed; inset: 0; z-index: 100; display: grid; place-items: center;
+  pointer-events: none; animation: sessionCurtain 1100ms var(--ease-out) forwards;
+}
+.session-emblem { display: grid; justify-items: center; gap: 10px; color: #f4f6f3; animation: emblemExit 950ms var(--ease-out) both; }
+.session-emblem span { font-size: 28px; font-weight: 650; letter-spacing: -.8px; }
+.session-emblem small { color: #c0cfce; font-size: 13px; }
+.session-workspace .app-header { animation: glassAppear 750ms 220ms var(--ease-out) both; }
+.session-workspace .left-stack { animation: glassAppear 850ms 280ms var(--ease-out) both; }
+.session-workspace .route-panel { animation: glassAppear 850ms 350ms var(--ease-out) both; }
+@keyframes glassAppear { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes sessionCurtain { 0%, 12% { opacity: 1; } 80%, 100% { opacity: 0; visibility: hidden; } }
+@keyframes emblemExit { 0%, 10% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(.94) translateY(-18px); } }
+@media (max-width: 900px) {
+  .auth-shell { grid-template-columns: 1fr; height: 100dvh; overflow-y: auto; padding: 16px; gap: 0; }
+  .auth-visual { min-height: 260px; padding: 26px; }
+  .auth-message { margin: 26px 0; }
+  .auth-message h1 { font-size: 34px; letter-spacing: -1px; }
+  .auth-form-side { padding: 24px 0 8px; }
+  .login-card { width: min(520px, 100%); }
+}
+@media (max-height: 680px) and (min-width: 901px) {
+  .auth-shell { overflow-y: auto; }
+  .auth-visual, .auth-form-side { min-height: 560px; }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root { --glass-surface: #293940; }
+  .login-card { background: #293940; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  :root { --glass-surface: #293940; }
+  .login-card { background: #293940; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .session-reveal { display: none; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

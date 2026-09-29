@@ -1,0 +1,52 @@
+# Python
+.pytest_cache/
+__pycache__/
+*.py[cod]
+.venv/
+.ruff_cache/
+backend/.venv/
+backend/.pytest_cache/
+backend/.ruff_cache/
+backend/pytest-cache-files-*/
+backend/**/__pycache__/
+backend/**/*.py[cod]
+
+# Node / Vite
+node_modules/
+dist/
+*.tsbuildinfo
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Local runtime and generated artifacts
+data/generated/*.json
+data/generated/*.geojson
+!data/generated/geocache.json
+!data/generated/road_matrix_cache.json
+!data/generated/road_geometry_cache.json
+!data/generated/.gitkeep
+data/raw/*.csv
+data/raw/*.xlsx
+!data/raw/.gitkeep
+.env
+.env.*
+!*.example
+
+# Editor / OS
+.idea/
+.vscode/
+*.log
+Thumbs.db
+.DS_Store
+*.tmp
+*.bak
+*.orig
+coverage/
+htmlcov/
+.coverage*
+*.pem
+*.key
+*.pfx
+# Organizer reference materials stay outside the published repository.
+*Контрольное распределение*

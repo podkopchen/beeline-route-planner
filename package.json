@@ -1,0 +1,12 @@
+{
+  "name": "routeflow-workspace",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "smoke": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/smoke.ps1",
+    "lint": "npm.cmd --prefix frontend run lint",
+    "typecheck": "npm.cmd --prefix frontend run typecheck",
+    "test": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/test-backend.ps1",
+    "build": "npm.cmd --prefix frontend run build"
+  }
+}

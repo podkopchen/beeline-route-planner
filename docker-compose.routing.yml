@@ -1,0 +1,6 @@
+services:
+  routing:
+    image: ghcr.io/project-osrm/osrm-backend:latest
+    command: osrm-routed --algorithm mld /data/moscow-mo.osrm
+    ports: ["5000:5000"]
+    volumes: ["./data/osrm:/data:ro"]
